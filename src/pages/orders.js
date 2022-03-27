@@ -1,11 +1,11 @@
-import { getSession, useSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/react";
 import db from "../../firebase";
 import Header from "../components/Header";
 import moment from "moment";
 import Order from "../components/Order";
 
 const Orders = ({ orders }) => {
-  const [session] = useSession();
+  const { data: session } = useSession();
 
   console.log("yoooooooooo", orders);
 
