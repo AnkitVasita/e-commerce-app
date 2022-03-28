@@ -7,8 +7,6 @@ import Order from "../components/Order";
 const Orders = ({ orders }) => {
   const { data: session } = useSession();
 
-  console.log("yoooooooooo", orders);
-
   return (
     <div>
       <Header />
