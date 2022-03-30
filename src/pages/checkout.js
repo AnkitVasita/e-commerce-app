@@ -85,7 +85,7 @@ const Checkout = () => {
                 role="Link"
                 onClick={createCheckoutSession}
                 disabled={!session}
-                className={` button mt-2 ${
+                className={` button mt-2 text-white ${
                   !session &&
                   "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed "
                 }`}

@@ -12,28 +12,32 @@ import { selectItems } from "../slices/basketSlice";
 const Header = () => {
   const { data: session } = useSession();
 
-  console.log(session);
-
   const router = useRouter();
   const items = useSelector(selectItems);
 
   return (
     <header>
       {/* top nav */}
-      <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
+      <div className="flex items-center  p-1 flex-grow py-2 bg-teal-900 ">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
-          <Image
+          {/* <Image
             onClick={() => router.push("/")}
             src="http://links.papareact.com/f90"
             width={150}
             height={40}
             objectFit="contain"
             className="cursor-pointer"
-          />
+          /> */}
+          <h1
+            className=" text-3xl px-2 pb-2 text-white font-medium cursor-pointer"
+            onClick={() => router.push("/")}
+          >
+            Z-Shop
+          </h1>
         </div>
 
         {/* search */}
-        <div className="hidden sm:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
+        <div className="hidden sm:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-teal-600 hover:bg-teal-700">
           <input
             type="text"
             className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4 "
@@ -58,7 +62,7 @@ const Header = () => {
             onClick={() => router.push("/checkout")}
             className=" relative link flex items-center cursor-pointer "
           >
-            <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black  font-bold ">
+            <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-teal-600 text-center rounded-full text-white  font-bold ">
               {items.length}
             </span>
             <ShoppingCartIcon className="h-10" />
@@ -70,7 +74,7 @@ const Header = () => {
       </div>
 
       {/* bottom nav */}
-      <div className="flex items-center space-x-3 p-2 pl-6 bg-amazon_blue-light text-white text-sm">
+      {/* <div className="flex items-center space-x-3 p-2 pl-6 bg-yellow-400 text-white text-sm">
         <p className="link flex items-center">
           <MenuIcon className="h-6 mr-1" />
           All
@@ -84,7 +88,7 @@ const Header = () => {
         <p className="link hidden lg:inline-flex">Buy Again</p>
         <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
         <p className="link hidden lg:inline-flex">Health & Personal Care</p>
-      </div>
+      </div> */}
     </header>
   );
 };

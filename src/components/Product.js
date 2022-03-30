@@ -43,7 +43,7 @@ const Product = ({ id, title, price, description, category, image }) => {
         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-500" key={i} />
+            <StarIcon className="h-5 text-teal-600" key={i} />
           ))}
       </div>
 
@@ -53,13 +53,13 @@ const Product = ({ id, title, price, description, category, image }) => {
         <Currency quantity={price * 70} currency="INR" />
       </div>
 
-      {hasPrime && (
+      {/* {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
           <img className="w-12" src="http://links.papareact.com/fdw" alt="" />
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
-      )}
-      <button onClick={addItemToBasket} className="mt-auto button">
+      )} */}
+      <button onClick={addItemToBasket} className="mt-auto button text-white">
         Add to Basket
       </button>
     </div>

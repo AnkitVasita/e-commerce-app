@@ -45,13 +45,13 @@ const CheckoutProduct = ({
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <StarIcon className="h-5 text-yellow-500" key={i} />
+              <StarIcon className="h-5 text-teal-600" key={i} />
             ))}
         </div>
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
         <Currency quantity={price * 70} currency="INR" />
-
+        {/* 
         {hasPrime && (
           <div className="flex items-center space-x-2 ">
             <img
@@ -62,16 +62,16 @@ const CheckoutProduct = ({
             />
             <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* right */}
 
       <div className="flex flex-col space-y-2 mr-2 my-auto justify-self-end">
-        <button onClick={addItemToBasket} className="button">
+        <button onClick={addItemToBasket} className=" text-white button">
           Add to Basket
         </button>
-        <button onClick={removeItemFromBasket} className="button">
+        <button onClick={removeItemFromBasket} className=" text-white button">
           Remove from Basket
         </button>
       </div>
