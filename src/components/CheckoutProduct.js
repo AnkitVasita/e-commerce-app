@@ -2,7 +2,11 @@ import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import {
+  addToBasket,
+  removeFromBasket,
+  decreasedFromCart,
+} from "../slices/basketSlice";
 
 const CheckoutProduct = ({
   id,
@@ -13,8 +17,10 @@ const CheckoutProduct = ({
   rating,
   image,
   hasPrime,
+  qty,
 }) => {
   const dispatch = useDispatch();
+
   const addItemToBasket = () => {
     const product = {
       id,
@@ -25,12 +31,25 @@ const CheckoutProduct = ({
       image,
       hasPrime,
     };
-
     dispatch(addToBasket(product));
   };
 
-  const removeItemFromBasket = () => {
+  function removeItemFromBasket() {
     dispatch(removeFromBasket({ id }));
+  }
+
+  const decreasedFromBasket = () => {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+      hasPrime,
+    };
+
+    dispatch(decreasedFromCart(product));
   };
 
   return (
@@ -51,28 +70,30 @@ const CheckoutProduct = ({
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
         <Currency quantity={price * 70} currency="INR" />
-        {/* 
-        {hasPrime && (
-          <div className="flex items-center space-x-2 ">
-            <img
-              loading="lazy"
-              className="w-12"
-              src="http://links.papareact.com/fdw"
-              alt=""
-            />
-            <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
-          </div>
-        )} */}
+        <br />
+        <button
+          className="  mb-2  mt-2 px-3 py-1.5 text-xs md:text-sm bg-gray-400 text-slate-900 font-sans rounded-sm"
+          onClick={removeItemFromBasket}
+        >
+          Remove
+        </button>
       </div>
 
       {/* right */}
 
-      <div className="flex flex-col space-y-2 mr-2 my-auto justify-self-end">
-        <button onClick={addItemToBasket} className=" text-white button">
-          Add to Basket
+      <div className=" flex flex-row sm:flex-col space-x-12  mr-10  my-auto justify-self-end  ">
+        <button
+          onClick={decreasedFromBasket}
+          className=" text-white font-bold px-1.5 button sm: mr-2"
+        >
+          -
         </button>
-        <button onClick={removeItemFromBasket} className=" text-white button">
-          Remove from Basket
+        {qty}
+        <button
+          onClick={addItemToBasket}
+          className=" text-white px-2 font-bold  button sm: ml-16"
+        >
+          +
         </button>
       </div>
     </div>

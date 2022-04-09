@@ -2,16 +2,18 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
-import { selectItems, selectTotal } from "../slices/basketSlice";
+import { clearCart, selectItems, selectTotal } from "../slices/basketSlice";
 import Currency from "react-currency-formatter";
 import { getSession, useSession } from "next-auth/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
 const Checkout = () => {
   const items = useSelector(selectItems);
   const { data: session } = useSession();
+  const dispatch = useDispatch();
 
   const total = useSelector(selectTotal);
 
@@ -46,7 +48,7 @@ const Checkout = () => {
             height={250}
             objectFit="contain"
           />
-          <div className="flex flex-col space-y-10 bg-white">
+          <div className="flex flex-col  space-y-10 pb-2 bg-white">
             <h1 className="text-3xl border-b pb-4 ">
               {" "}
               {items.length === 0
@@ -64,6 +66,7 @@ const Checkout = () => {
                 category={item.category}
                 image={item.image}
                 hasPrime={item.hasPrime}
+                qty={item.qty}
               />
             ))}
           </div>
@@ -111,3 +114,14 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+// {
+//   items.length > 0 ? (
+//     <button
+//       className=" lg: w-36  ml-96 sm:ml-0  text-slate-900  rounded-sm  text-lg bg-gray-400"
+//       onClick={() => dispatch(clearCart())}
+//     >
+//       Clear Basket
+//     </button>
+//   ) : null;
+// }

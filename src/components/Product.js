@@ -2,13 +2,19 @@ import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useState } from "react";
 import Currency from "react-currency-formatter";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addToBasket } from "../slices/basketSlice";
+import {
+  addToBasket,
+  selectItems,
+  removeFromBasket,
+} from "../slices/basketSlice";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 const Product = ({ id, title, price, description, category, image }) => {
+  const items = useSelector(selectItems);
   const dispatch = useDispatch();
   const randomNumber =
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING;
@@ -28,6 +34,19 @@ const Product = ({ id, title, price, description, category, image }) => {
 
     dispatch(addToBasket(product));
   };
+
+  function removeBasket() {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+      hasPrime,
+    };
+    dispatch(removeFromBasket(product));
+  }
 
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10">
@@ -59,9 +78,16 @@ const Product = ({ id, title, price, description, category, image }) => {
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
       )} */}
-      <button onClick={addItemToBasket} className="mt-auto button text-white">
-        Add to Basket
-      </button>
+
+      {items.some((item) => item.id === id) ? (
+        <button onClick={removeBasket} className="mt-auto button text-white">
+          Remove from Basket
+        </button>
+      ) : (
+        <button onClick={addItemToBasket} className="mt-auto button text-white">
+          Add to Basket
+        </button>
+      )}
     </div>
   );
 };
