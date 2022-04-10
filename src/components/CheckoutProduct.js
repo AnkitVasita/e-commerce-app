@@ -81,17 +81,17 @@ const CheckoutProduct = ({
 
       {/* right */}
 
-      <div className=" flex flex-row sm:flex-col space-x-12  mr-10  my-auto justify-self-end  ">
+      <div className=" lg:mr-20 flex flex-row sm:flex-col space-x-1 mr-2   my-auto justify-self-end  ">
         <button
           onClick={decreasedFromBasket}
-          className=" text-white font-bold px-1.5 button sm: mr-2"
+          className=" text-white font-bold px-1.5 button "
         >
           -
         </button>
-        {qty}
+        <span className="lg:py-2 text-center">{qty}</span>
         <button
           onClick={addItemToBasket}
-          className=" text-white px-2 font-bold  button sm: ml-16"
+          className=" text-white px-2 font-bold  button "
         >
           +
         </button>
