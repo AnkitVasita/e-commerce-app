@@ -20,14 +20,7 @@ const Header = () => {
       {/* top nav */}
       <div className="flex items-center  p-1 flex-grow py-2 bg-teal-900 ">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
-          {/* <Image
-            onClick={() => router.push("/")}
-            src="http://links.papareact.com/f90"
-            width={150}
-            height={40}
-            objectFit="contain"
-            className="cursor-pointer"
-          /> */}
+         
           <h1
             className=" text-3xl px-2 pb-2 text-white font-medium cursor-pointer"
             onClick={() => router.push("/")}
@@ -72,23 +65,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* bottom nav */}
-      {/* <div className="flex items-center space-x-3 p-2 pl-6 bg-yellow-400 text-white text-sm">
-        <p className="link flex items-center">
-          <MenuIcon className="h-6 mr-1" />
-          All
-        </p>
-        <p className="link">Prime Video</p>
-        <p className="link">Amazon Business</p>
-        <p className="link">Todays's Deal</p>
-        <p className="link hidden lg:inline-flex">Electronics</p>
-        <p className="link hidden lg:inline-flex">Food & Grocery</p>
-        <p className="link hidden lg:inline-flex">Prime</p>
-        <p className="link hidden lg:inline-flex">Buy Again</p>
-        <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
-        <p className="link hidden lg:inline-flex">Health & Personal Care</p>
-      </div> */}
     </header>
   );
 };

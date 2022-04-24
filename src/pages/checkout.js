@@ -27,6 +27,8 @@ const Checkout = () => {
       email: session.user.email,
     });
 
+    console.log("checkout Session", checkoutSession);
+
     // redirect user/customer  to stripe checkout
 
     const result = await stripe.redirectToCheckout({
